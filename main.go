@@ -1,11 +1,14 @@
 package main
 
 import(
-  "fmt"
-  user "github.com/PandoraWTG/siakad_go/user"
+  "github.com/gofiber/fiber/v2"
 )
 
 func main(){
-  fmt.Println("this is a test")
-  user.Test()
+  route := fiber.New()
+
+  route.Get("/", func(c *fiber.Ctx) error {
+    return c.SendString("Testing")
+  })
+  route.Listen(":3000")
 }
